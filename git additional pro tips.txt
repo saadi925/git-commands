@@ -1,0 +1,67 @@
+traditional way 
+git add . 
+git commit -m 'the ugly commit message'
+
+better way 
+git commit -am 'Auto add all the files in pwd'
+
+aliases 
+git config --global alias.ac "commit -am"
+
+
+git ac "goud!"  <---- typo
+
+git commit --amend -m "good!"
+git commit --amend --no-edit (it will only work if you have pushed your code to a remote repo)
+git push origin master --force    (overwrite the remote commit with the stage of your local code)
+(however if they are commits on the remote branch that you don't have you will lose them forever)
+
+revert cmd 
+undo a commit with a new commit 
+
+git stash (remove the changes form pwd and save them for later without commiting them )
+
+git stash pop (when you are ready to use those changes after years )
+git stash save coolstuff 
+git stash list  (to find it )
+git stash applly 0 (with the corresponding index)
+ 
+git branch -M main rename 
+git log --graph --oneline --decorate
+git bisect start
+git bisect bad
+git bisect good
+
+
+Squash the commits 
+git rebase master --interactive
+
+git commit --fixup fb2434f34
+git commit --squash fc343sdf
+git rebase -i --autosquash
+
+Git Hooks
+git commit -m 'here is some useless commit'
+it creates an event and hooks allows us to run code before and after that event happen 
+husky package for js developer 
+npm i husky -D
+
+
+Test on Every Commit 
+npm set-script prepare "husky install"
+npm run prepare
+
+Add a Hook
+npx husky add .husky/pre-commit "npm test"
+git add .husky/pre-commit
+
+Make a commit 
+ git commit -m "Keep calm and commit"
+  // npm test will run on every commit
+
+git fetch origin 
+(grab the latest code in the remote repo)
+git reset --hard origin/master  overwrite your local code with the remote code (caution ! local changes will be deleted)
+git clean -df 
+
+git checkuot  - (to go into the previous branch - if you forgot the name )

@@ -1,0 +1,136 @@
+Commands Git 
+git init 
+git add . or git add --a
+git status 
+git config --global user.name Saad
+git config --global user.email codestacklab@gmail.com
+git commit -m 'Commit Changes'
+git commit -a -m 'Direct Commit without staging area'
+git commit --amend 
+git restore --staged file.txt  to unstage 
+    will go into modified (red)
+git checkout -- first.txt   unmodifidy the file (matched with the previous commit)
+git checkout -f (all the changes will be matched with the previous commit and will be lost.)
+
+(git aliases )
+git config --global alias.st status 
+git config --global alias.ci commit 
+git config --global alias.unstage 'restore --staged --'
+git config --global alias.last 'log -p -1'
+(using aliases)
+git st   (for status)
+git ci   (for commit)
+
+(remote)
+git remote add origin git@github.com:........
+git remote -v
+git remote push -u origin master 
+git push origin localbranchname:newname (branch name will be change on the git repo when pushing )
+
+(branches)
+git checkout -b branchname (create and switch the branch) 
+ 
+ merge 
+ ( in master branch)
+ git merge branchname
+ (resolve basic merge conflict)
+  git add. 
+  git commit 
+ escape :wq enter 
+
+branch management 
+git branch 
+ *master 
+ *underprocess 
+ *system
+
+git branch -v  ( branchname commit hash commit message)
+git branch --merged ---> banch + already merged branches 
+git branch --nomerged --->not already merged branches
+
+(delete a branch )
+git branch -d underprocess --> gives error if underprocess is not merged 
+
+ --->only for tracked files
+git log 
+git log -p    shows ( -remove +add ) 
+git log -p  -3  shows only three commits ( -remove +add ) 
+git log --stat (summary about the commits)
+git log --pretty=oneline
+git log --pretty=short (commit  message)
+git log --pretty=full (commit author message)
+git log --pretty=format:"%h--%an"
+git log --since=2.days
+git log --since=2.weeks
+git log --since=2.months
+git log --since=2.years
+git diff (compares staging area and working directory) 
+git diff --staged   (compares staging area vs commit )
+git rm --cached filename.txt it will untracked a tracking file 
+.gitignore
+git rm filename.txt   for removing a file
+git mv filname.txt rename_name.txt    for renaming a file in git
+git clone htpps:// ......
+git clone htpps:// ......  newname
+  
+
+linux related cmd:
+cd
+ls
+pwd  
+rm -rf .git delete the git repo 
+q  (to exit pager)
+
+
+
+
+use vim . 
+i to insert 
+escape 
+:wq
+enter
+
+
+
+DVS -->Distributed Version Control System
+pull & push 
+
+SSH & GPG Keys
+Title computer name  
+key  
+Generate SSH Keys for github
+step-1: ssh-keygen -t rsa -b 4096 -C "code@codestacklab.com"
+check if ss-agent is running 
+step-2: eval $(ssh-agent -s)
+step-3: ssh-add ~/.ssh/id_rsa
+step-4: tail ~/.ssh/id_rsa.pub
+
+
+
+
+
+
+
+
+       ---Branching Workflows ---
+       |                        |
+Long Running Branches     Topic Branches
+
+    
+    _____
+   |     |  --------->  Topic Branch          
+   |_____|               file integration
+  developer             (short lived branches)
+
+
+
+  (master)
+commit 10
+commit 9
+commit 3 -                              (issue1 branch)   (issue1 v2)
+commit 1 - 'birth of proj'                commit 6          commit 11
+                                          commit 5           commit 8 
+                                          commit 4           commit 7 
+                                          commit 2 
+
+
